@@ -1,0 +1,50 @@
+﻿@model Korisnik
+@{
+    ViewData["Title"] = "NekiKorisnik";
+    List<Biljeska> biljeske = ViewBag.biljeske;
+}
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <article>
+
+        <h2>@Model.KorisnickoIme</h2>
+        <p><b>Ime: </b>@Model.Ime</b></p>
+        <p><b>Prezime: </b>@Model.Prezime</b></p>
+        <p><b>Kontakt: </b>@Model.KontaktBroj</b></p>
+        <p><b>eMail: </b>@Model.Email</b></p>
+        <p>
+            <b>Član: </b>
+
+            @if (Model.IdGljivarskoDrustvoNavigation != null)
+            {
+            <a href="@Url.Action("NekiGljivarDrustvo", "GljivarDrustvo", new { id = Model.IdGljivarskoDrustvo })">
+                @Model.IdGljivarskoDrustvoNavigation.Naziv
+            </a>
+                
+            }
+            else
+            {
+                <h>Korisnik nije član niti jednog gljivarskog društva</h>
+            }
+
+        </p>
+        <h1><b>Bilješke:</b></h1>
+        @foreach (var b in biljeske)
+        {
+            <p>
+                <a href="@Url.Action("NekaBiljeska", "Biljeska", new { id = b.IdKorisnika })">
+                    @b.Naziv
+                </a>
+            
+            </p>
+        }
+
+    </article>
+</body>
+

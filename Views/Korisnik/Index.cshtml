@@ -1,0 +1,80 @@
+﻿@model List<Korisnik>
+@{
+
+    ViewData["Title"] = "Index";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div>
+
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Korisničko ime</th>
+                @*<th>idGljivarskoDrustvo</th>
+                    <th>Kontakt broj</th>
+                    <th>eMail</th>*@
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+
+                    <td>@p.Ime</td>
+                    <td>@p.Prezime</td>
+                    <td>@p.KorisnickoIme</td>
+                    @*@if (p.IdGljivarskoDrustvo.Equals(null))
+                        {
+                            <td>-</td>
+                        }
+                        else
+                        {
+                            <td>@p.IdGljivarskoDrustvoNavigation.Naziv</td>
+                        }
+                        <td>@p.KontaktBroj</td>
+                        <td>@p.Email</td>*@
+                <td>
+                    <a href="@Url.Action("NekiKorisnik", "Korisnik", new { id = p.IdKorisnik })">detalji</a>
+                    <a href="@Url.Action("Update", "Korisnik", new { id = p.IdKorisnik })">update</a>
+                    <a  href="@Url.Action("Delete", "Korisnik", new { id = p.IdKorisnik })">delete</a>
+
+                </td>
+
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Korisničko ime</th>
+                @*<th>idGljivarskoDrustvo</th>
+                    <th>Kontakt broj</th>
+                    <th>eMail</th>*@
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+
+
+</div>
+
+<span class="send">
+    <a href="@Url.Action("NoviKorisnik", "Korisnik")">
+        Dodaj novog korisnika
+    </a>
+
+</span>

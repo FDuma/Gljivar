@@ -1,0 +1,44 @@
+.redDiv {
+    display: flex;
+    /*align-items: center;*/
+    justify-content: space-around;
+}
+
+
+
+#submitbtn {
+    height: 35px;
+    width: 35px;
+    background-color: lightblue;
+    color: black;
+    display: block;
+    font-size: 15px;
+    float: left;
+    margin-top: 35px;
+}
+
+.subBtn input:hover {
+    background-color: rgb(14, 184, 14);
+}
+
+table {
+    border-collapse: collapse;
+    border-width: 0px;
+}
+
+tr, td {
+    border-bottom: 2px solid lightblue;
+    margin-top: 25px;
+}
+
+td > span {
+    margin-left: 35px;
+    height: 35px;
+    display: block;
+    margin-top: 25px;
+}
+
+.tex-area-form {
+    height: 20px;
+    width: 500px;
+}

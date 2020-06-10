@@ -1,0 +1,74 @@
+﻿@model GljivarDrustvo
+@{
+    ViewData["Title"] = "GljivarDrustvo";
+    List<Korisnik> korisnici = ViewBag.korisnici;
+    List<Objava> objave = ViewBag.objave;
+    List<Dogadaj> dogadaji = ViewBag.dogadaji;
+}
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <article>
+
+        <h2>@Model.Naziv</h2>
+        <p><b>Županija: </b>@Model.IdMjestoNavigation.Naziv</b></p>
+
+        <p>
+            <b>Članovi: </b>
+
+            @foreach (var k in korisnici)
+            {
+                @if (k.IdGljivarskoDrustvo == Model.IdGljivarDrustvo)
+
+                {
+
+                    <a href="@Url.Action("NekiKorisnik", "Korisnik", new { id = k.IdKorisnik })">
+                        @k.KorisnickoIme
+                    </a>
+
+                }
+            }
+        <p><b>Objave: </b></p>
+        @foreach (var o in objave)
+        {
+
+            @if (o.IdGljivarDrustvo != null && o.IdGljivarDrustvo == Model.IdGljivarDrustvo)
+
+            {
+                <p>
+                    <a href="@Url.Action("NekaObjava", "Objava", new { id = o.IdObjava })">
+                        @o.Naziv
+                    </a>
+                </p>
+            }
+        }
+
+        </p>
+
+        <p><b>Događaji: </b></p>
+        @foreach (var d in dogadaji)
+        {
+
+            @if (d.IdGljivarDrustvo != null && d.IdGljivarDrustvo == Model.IdGljivarDrustvo)
+
+            {
+                <p>
+                    <a href="@Url.Action("NekiDogadaj", "Dogadaj", new { id = d.IdDogadaj })">
+                        @d.Naziv
+                    </a>
+                </p>
+            }
+        }
+
+        </p>
+
+
+
+    </article>
+</body>
+

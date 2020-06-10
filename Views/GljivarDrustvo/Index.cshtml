@@ -1,0 +1,41 @@
+﻿@model List<GljivarDrustvo>
+@{
+
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Naziv</th>
+                <th>Županija</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+
+                    <td>@p.Naziv</td>
+                    <td>@p.IdMjestoNavigation.Naziv</td>
+                    <td> <a href="@Url.Action("NekiGljivarDrustvo", "GljivarDrustvo", new { id = p.IdGljivarDrustvo })">detalji</a></td>
+
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>Naziv</th>
+                <th>Županija</th>
+            </tr>
+        </tfoot>
+    </table>
+
+
+</div>

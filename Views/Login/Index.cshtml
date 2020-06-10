@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+@{
+    bool error = ViewBag.LogErr;
+}
+
+@if (error)
+{
+    <div style="background-color: indianred; padding: 20px;">
+        Upisani podaci nisu ispravni
+    </div>
+}
+<div class="wrapper">
+    <form action="" method="POST" class="loginBox">
+        <div class="insideWrapper">
+            <div class="loginBox">
+                <label class="labelLog">Name: </label>
+                <input class="inputLog" type="text" name="name" placeholder="User name">
+                <label class="labelLog">Password: </label>
+                <input class="inputLog" type="password" name="password" placeholder="password" required>
+                <input class="inputLog" style="height:55px; width: 225px; border-radius: 10px; background-color: lightgreen; padding: 5%; margin: 3%;" type="submit" name="confirm">
+            </div>
+        </div>
+    </form>
+</div>

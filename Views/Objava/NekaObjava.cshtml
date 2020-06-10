@@ -1,0 +1,95 @@
+﻿@model Objava
+@{
+    ViewData["Title"] = "NekaObjava";
+    List<Komentar> komentari = ViewBag.komentari;
+    List<Korisnik> komentator = ViewBag.komentatori;
+    string imeUser = ViewBag.userName;
+    bool? userIn = ViewBag.userIn;
+    int? userId = ViewBag.userId;
+    
+        }
+
+
+
+        @{
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+
+        <body>
+            <article>
+
+                <h2>@Model.Naziv</h2>
+                <b>Autor:</b>
+                @if (Model.IdGljivarDrustvo != null)
+                {
+                    <a href="@Url.Action("NekiGljivarDrustvo", "GljivarDrustvo", new { id = Model.IdGljivarDrustvo })">
+                        @Model.IdGljivarDrustvoNavigation.Naziv
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("NekiKorisnik", "Korisnik", new { id = Model.IdKorisnika })">
+                        @Model.IdKorisnikaNavigation.KorisnickoIme
+                    </a>
+                }
+                @if (Model.Datum != null)
+                {
+                    <p title="Datum"><b>Datum: </b>@Model.Datum</p>
+                }
+                else
+                {
+                    <p title="Datum"><b>Datum: </b>- </p>
+                }
+                <p>@Model.Objava1</p>
+                <br><br>
+            </article>
+        </body>
+
+        <!--tu pocinju komentari za tu poslovnicu-->
+        <form action="@Url.Action("NekaObjava", "Objava")" method="post">
+            <div class="makeComment">
+                <textarea class="txt" name="komentar" placeholder="Upisi komentar"></textarea>
+                <input type="hidden" name="id" value="@Model.IdObjava" hidden="hidden" />
+                <!--tu ide input za id usera-->
+        @if (userIn != true)
+        {
+            <input type="hidden" name="userId" value="1004" hidden="hidden" />
+        }
+        else
+        {
+            <input type="hidden" name="userId" value="@userId" hidden="hidden" />
+        }
+                
+                <div>
+                    <a href="@Url.Action("Index", "Home")">
+                        <button class="send" type="submit">
+                            Posalji komentar
+                        </button>
+                    </a>
+                </div>
+            </div>
+            </form>
+
+
+
+        @foreach (var kom in komentari)
+        {
+            <br>
+            Korisnik kor = null;
+            @if (kom.IdKorisnik != null) { kor = komentator.Where(k => k.IdKorisnik == kom.IdKorisnik).First(); }
+
+            <div class="userDiv">
+                <span class="user">
+                    @if (kor != null)
+                    {
+                        <b>@kor.KorisnickoIme</b>
+                    }
+                    else
+                    { <span>Nepoznati korisnik</span>}
+
+                </span>
+            </div>
+            <p class="otherComm">
+                @kom.Komentar1
+            </p>
+        }

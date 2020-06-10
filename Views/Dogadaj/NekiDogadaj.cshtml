@@ -1,0 +1,38 @@
+﻿@model Dogadaj
+@{
+    ViewData["Title"] = "NekiDogadaj";
+}
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <article>
+
+        <h2>@Model.Naziv</h2>
+        <b>Autor:</b>
+        @if (Model.IdGljivarDrustvo != null)
+        {
+            <a href="@Url.Action("NekiGljivarDrustvo", "GljivarDrustvo", new { id = Model.IdGljivarDrustvo })">
+                @Model.IdGljivarDrustvoNavigation.Naziv
+            </a>
+        }
+        else
+        {
+            <b>-</b>
+        }
+        @if (Model.Datum != null)
+        {
+            <p title="Datum"><b>Datum: </b>@Model.Datum</p>
+        }
+        else
+        {
+            <p title="Datum"><b>Datum: </b>- </p>
+        }
+        <p>@Model.Opis</p>
+        <br><br>
+    </article>
+</body>

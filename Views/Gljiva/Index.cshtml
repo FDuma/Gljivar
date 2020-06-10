@@ -1,0 +1,56 @@
+﻿@model List<Gljiva>
+@{
+
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Naziv gljive</th>
+                <th>Kategorija</th>
+                <th>Opis</th>
+                <th>Otrovna</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Naziv</td>
+                    <td>@p.Kategorija</td>
+                    <td>@p.Opis</td>
+                    @if (@p.Otrovnica.Equals(null))
+                    {
+                        <td>-</td>
+                    } else if(@p.Otrovnica.Equals(true))
+                    {
+                        <td>DA</td>
+                    }
+                    else
+                    {
+                        <td>NE</td>
+                    }
+                    <td><a href="@Url.Action("NekaGljiva", "Gljiva", new { id = p.IdGljive })">detalji</a></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Naziv gljive</th>
+                <th>Kategorija</th>
+                <th>Opis</th>
+                <th>Otrovna</th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+
+
+</div>

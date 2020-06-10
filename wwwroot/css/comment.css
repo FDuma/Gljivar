@@ -1,0 +1,51 @@
+.makeComment {
+    display: flex;
+    align-content: space-between;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: whitesmoke;
+}
+
+.otherComm {
+    border: 3px solid lightblue;
+    padding: 5px;
+    text-align: left;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    margin-top: 3px;
+    flex: 3;
+    order: 1;
+}
+
+.send {
+    border: 3px solid hidden;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    color: black;
+    
+}
+
+    .send:hover {
+        background-color: lightslategray;
+        color: white;
+    }
+
+.txt {
+    width: 50%;
+    height: 100px;
+    border-radius: 20px;
+}
+
+.user {
+    padding: 10px;
+    margin-top: 20px;
+    background-color: white;
+}
+
+.userDiv {
+    padding: 10px;
+    margin-top: 20px;
+}

@@ -1,0 +1,38 @@
+﻿@model List<Dogadaj>
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+
+        a:hover, a.ex1:active {
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+
+<body>
+    @foreach (var d in Model)
+    {
+
+
+
+        <article>
+
+            <h2>
+                @*indeks -> funkcija, Gljiva -> Kontroler *@
+                <a href="@Url.Action("NekiDogadaj", "Dogadaj", new { id = d.IdDogadaj })">@d.Naziv</a>
+            </h2>
+
+
+            <p>@d.Opis</p>
+            <br><hr><br>
+        </article>
+    }
+</body>

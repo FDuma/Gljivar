@@ -1,0 +1,102 @@
+﻿@model List<Mjesto>
+@{
+    ViewData["Title"] = "NoviProizvod";
+    List<GljivarDrustvo> gljivarDrustvo = ViewBag.gljivarDrustvo;
+}
+
+    <h5>Podaci o korisniku:</h5>
+
+<form action="@Url.Action("NoviKorisnik", "Korisnik")" method="post">
+    <table>
+        
+        <tr>
+            <td>
+                <span>
+                    <label for="korisnickoIme">Korisničko ime:</label>     
+                    <input type="text" name="korisnickoIme" placeholder="Unesite korisnicko ime" required>
+                </span>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <label for="pass">Lozinka:</label>
+                    <input type="password" name="pass" placeholder="Unesite lozinku" required>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <label for="ime">Vaše ime:</label>
+                    <input type="text" name="ime" placeholder="Unesite vaše ime" required>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <label for="prezime">Vaše prezime:</label>
+                    <input type="text" name="prezime" placeholder="Unesite vaše prezime" required>
+                </span>
+            </td>
+         </tr>
+        <tr>
+            <td>
+                <span>
+                    <label for="idMjesta">Županija: </label>
+                    <select name="idMjesta">
+                        @foreach (var p in Model)
+                        {
+                            <option value="@p.IdMjesta">@p.Naziv</option>
+                        }
+                    </select>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <label for="idGljivarDrustvo">Član: </label>
+                    <select name="idGljivarDrustvo">
+                        <option value="-1"> - </option>
+                        @foreach (var g in gljivarDrustvo)
+                        {
+                            <option value="@g.IdGljivarDrustvo">@g.Naziv</option>
+                        }
+                    </select>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <label for="kontaktBroj">Kontakt broj: </label>
+                    <input type="number" name="kontaktBroj" placeholder="Unesite broj kontakta">
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <label for="email">eMail: </label>
+                    <input type="text" name="email" placeholder="Unesite svoju elektroničku poštu">
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <label for="isAdmin">Administrator: </label>
+                    <input type="checkbox" name="isAdmin" value=false>
+                </span>
+            </td>
+            <button id="submitbtn" type="submit" style="min-width:100px;">Unesi</button>
+        </tr>
+
+
+       
+    </table>
+    
+</form>

@@ -1,0 +1,40 @@
+﻿@model List<Objava>
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <head>
+        <style>
+            
+            a:hover, a.ex1:active {
+                color: red;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        @foreach (var o in Model)
+        {
+
+            
+
+            <article>
+
+                <h2>
+                    @*indeks -> funkcija, Gljiva -> Kontroler *@
+                    <a href="@Url.Action("NekaObjava", "Objava", new { id = o.IdObjava })">@o.Naziv</a>
+                </h2>
+
+
+                <p>@o.Objava1</p>
+                <br><hr><br>
+            </article>
+        }
+    </body>
+
+

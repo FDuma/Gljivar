@@ -1,0 +1,42 @@
+﻿@model Gljiva
+@{
+    ViewData["Title"] = "NekaGljiva";
+    List<String> mjesta = ViewBag.gljivaUMjestu;
+}
+
+    <body>
+        <article>
+
+            <h2>@Model.Naziv</h2>
+            <p><b>Kategorija: </b>@Model.Kategorija</b></p>
+            <p><b>Opis: </b>@Model.Opis</b></p>
+            <p>
+                <b>
+                    Otrovno:
+                    @if (Model.Otrovnica != null)
+                    {
+                        @if (Model.Otrovnica.Value)
+                        {
+                            <b>Da</b>
+                        }
+                        else
+                        {
+                            <b>Ne</b>
+                        }
+                    }
+                    else
+                    {
+                        <b> - </b>
+                    }
+            </p>
+            <p>Zupanije:</p>
+            @foreach (var m in mjesta)
+            {
+                <b>@m</b>
+            }
+
+
+
+        </article>
+    </body>
+

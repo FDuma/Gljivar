@@ -1,0 +1,41 @@
+﻿@model Biljeska
+@{
+    ViewData["Title"] = "NekaBiljeska";
+}
+@if (Model.IsPublic != null)
+{
+    @if (Model.IsPublic.Value)
+    {
+        <body>
+            <article>
+
+                <h2>@Model.Naziv</h2>
+                <b>Autor:</b>
+                @if (Model.IdKorisnikaNavigation != null)
+                {
+                    <b>@Model.IdKorisnikaNavigation.KorisnickoIme</b>
+                }
+                else
+                {
+                    <b> - </b>
+                }
+                @if (Model.Datum != null)
+                {
+                    <p title="Datum"><b>Datum: </b>@Model.Datum</p>
+                }
+                else
+                {
+                    <p title="Datum"><b>Datum: </b>- </p>
+                }
+                <p>@Model.Biljeska1</p>
+                <br><br>
+            </article>
+        </body>
+    }
+    else
+    {
+        <h2>@Model.Naziv</h2>
+        <p>Ova bilješka je privatna</p>
+    }
+}
+
